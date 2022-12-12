@@ -25,23 +25,23 @@ public class ProductoControlador {
         modelo.addAttribute("productos", servicio.findAll());
         return "listarproducto";
     }
-
-    /*@GetMapping("/registrocarrera")
+    @GetMapping("/registroproducto")
     public String MostrarFormularioRegistro(Model modelo) {
         //es el nombre que tendra la pagina web
-        modelo.addAttribute("cursos", servicioproducto.findAll());
-        return "registrocarrera";
+        modelo.addAttribute("productos", serviciocurso.findAll());
+        return "registroproducto";
     }
 
-    @ModelAttribute("cateogorias")
-    public ProductoEntity RegistroCurso() {
+    @ModelAttribute("producto")
+    public ProductoEntity RegistroProducto() {
         return new ProductoEntity();
     }
 
     @PostMapping("/registroproducto")
     public String RegistroProductoNuevo(
-            @ModelAttribute("carrera") ProductoEntity c) {
+            @ModelAttribute("producto") ProductoEntity c) {
         servicio.add(c);
         return "redirect:/listarproducto?correcto";
-    }*/
+    }
+    
 }
