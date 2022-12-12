@@ -16,14 +16,14 @@ public class ProductoControlador {
     @Autowired
     private ProductoService servicio;
     @Autowired
-    private ProductoService servicioproducto;
+    private ProductoService serviciocurso;
 
+    
 
-
-    @GetMapping("/listarProducto")
-    public String PaginaProductoCarrera(Model modelo) {
+    @GetMapping("/listarproducto")
+    public String PaginaListarCarrera(Model modelo) {
         modelo.addAttribute("productos", servicio.findAll());
-        return "listarcarrera";
+        return "listarproducto";
     }
 
     /*@GetMapping("/registrocarrera")
