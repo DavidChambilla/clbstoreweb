@@ -60,4 +60,11 @@ public class CategoriaRestController {
         objcategoria.setEstado(false);
         return categoriaservice.delete(CategoriaEntity.builder().codigo(id).build());
     }
+    
+    @PostMapping("/habilitar/{id}")
+    public CategoriaEntity enable(@PathVariable Long id) {
+        CategoriaEntity objcategoria = new CategoriaEntity();
+        objcategoria.setEstado(true);
+        return categoriaservice.enable(CategoriaEntity.builder().codigo(id).build());
+    }
 }

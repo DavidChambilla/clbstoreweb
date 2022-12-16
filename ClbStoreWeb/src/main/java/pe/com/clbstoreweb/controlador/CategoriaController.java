@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,8 +18,8 @@ public class CategoriaController {
     private CategoriaService servicio;
     
     @GetMapping("/listarcategoria")
-    public String PaginaListarCurso(Model modelo) {
-        modelo.addAttribute("categorias", servicio.findAll());
+    public String PaginaListarCategoria(Model modelo) {
+        modelo.addAttribute("categorias", servicio.findAllCustom());
         return "listarcategoria";
     }
     
@@ -40,13 +41,12 @@ public class CategoriaController {
         return "redirect:/listarcategoria?correcto";
     }
 
-//    @GetMapping("/actualizarcategoria/{id}")
+//    @GetMapping("/actualizarcurso/{id}")
 //    public String MostrarFormularioActualizar(@PathVariable Long id,
 //            Model modelo) {
-//        modelo.addAttribute("categorias", servicio.findById(id));
-//        return "actualizacategoria";
+//        modelo.addAttribute("cursos", servicio.findById(id));
+//        return "actualizacurso";
 //    }
-    
     @GetMapping("/actualizacategoria/{id}")
     public String MostrarFormularioActualiza(@PathVariable Long id, Model modelo) {
         modelo.addAttribute("categorias", servicio.findById(id));
@@ -58,5 +58,25 @@ public class CategoriaController {
             @ModelAttribute("categoria") CategoriaEntity c) {
         servicio.update(c);
         return "redirect:/listarcategoria?actualizo";
+    }
+    
+    @GetMapping("/eliminacategoria/{id}")
+    public String EliminaCategoria(@PathVariable Long id, Model modelo) {
+        CategoriaEntity objcategoria = servicio.findById(id);
+        servicio.delete(objcategoria);
+        return "redirect:/listarcategoria?elimino";
+    }
+    
+    @GetMapping("/habilitarcategoria")
+    public String PaginaHabilitarCategoria(Model modelo) {
+        modelo.addAttribute("categorias", servicio.findAll());
+        return "habilitarcategoria";
+    }
+    
+    @GetMapping("/habilitacategoria/{id}")
+    public String HabilitaCategoria(@PathVariable Long id, Model modelo) {
+        CategoriaEntity objcategoria = servicio.findById(id);
+        servicio.enable(objcategoria);
+        return "redirect:/listarcategoria?habilito";
     }
 }

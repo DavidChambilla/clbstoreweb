@@ -16,19 +16,19 @@ public class ProductoControlador {
     @Autowired
     private ProductoService servicio;
     @Autowired
-    private ProductoService serviciocurso;
+    private ProductoService serviciocategoria;
 
     
 
     @GetMapping("/listarproducto")
-    public String PaginaListarCarrera(Model modelo) {
+    public String PaginaListarProducto(Model modelo) {
         modelo.addAttribute("productos", servicio.findAll());
         return "listarproducto";
     }
     @GetMapping("/registroproducto")
     public String MostrarFormularioRegistro(Model modelo) {
         //es el nombre que tendra la pagina web
-        modelo.addAttribute("productos", serviciocurso.findAll());
+        modelo.addAttribute("productos", serviciocategoria.findAll());
         return "registroproducto";
     }
 

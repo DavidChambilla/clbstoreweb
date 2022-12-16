@@ -42,5 +42,5 @@ public class ProductoEntity implements Serializable {
     @ManyToOne
     //@JoinColumn define el campo que genera la clave foranea
     @JoinColumn(name="codcat", nullable = false)
-    private CategoriaEntity curso;
+    private CategoriaEntity categoria;
 }

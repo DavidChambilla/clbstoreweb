@@ -17,4 +17,6 @@ public interface CategoriaService {
     CategoriaEntity delete(CategoriaEntity c);
     //funcion para mostrar datos habilitados
     List<CategoriaEntity> findAllCustom();
+    
+    CategoriaEntity enable(CategoriaEntity c);
 }

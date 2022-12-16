@@ -49,21 +49,6 @@
                         Se registro exitosamente                  
                     </div>
                 </div>
-                <div th:if=${param.actualizo}>
-                    <div class="alert alert-success" role="alert">
-                        Se actualizo exitosamente                  
-                    </div>
-                </div>
-                <div th:if=${param.elimino}>
-                    <div class="alert alert-success" role="alert">
-                        Se elimino exitosamente                  
-                    </div>
-                </div>
-                <div th:if=${param.habilito}>
-                    <div class="alert alert-success" role="alert">
-                        Se habilito exitosamente                  
-                    </div>
-                </div>
                 <div class="col-md-12">
                     <h1>Lista de Categoria</h1>
                     <div class="table-responsive">
@@ -72,22 +57,22 @@
                             <th>Codigo</th>
                             <th>Nombre</th>
                             <th>Estado</th>
-                            <th>ACTUALIZAR</th>
-                            <th>ELIMINAR</th>
+                            <th></th>
                             </thead>
                             <tbody>
                                 <tr th:each="categoria : ${categorias}">
                                     <td th:text="${categoria.codigo}"></td>
                                     <td th:text="${categoria.nombre}"></td>
                                     <td th:text="${categoria.estado}? 'Habilitado':'Deshabilitado'"></td> 
-                                    <td><a th:href="@{/actualizacategoria/{id}(id=${categoria.codigo})}" class="btn btn-success">Actualizar</a></td>
-                                    <td><a th:href="@{/eliminacategoria/{id}(id=${categoria.codigo})}" class="btn btn-danger">Eliminar</a></td>
+                                    <td><a th:href="@{/habilitacategoria/{id}(id=${categoria.codigo})}" class="btn btn-info">Habilitar</a></td>
+
+
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    <a th:href="@{/registrocategoria}" class="btn btn-primary">Registrar Categoria</a>
-                    <a th:href="@{/habilitarcategoria}" class="btn btn-info">Habilitar Categoria</a>
+                    <a th:href="@{/listarcategoria}" class="btn btn-secondary">Regresar</a>
+
 
 
 

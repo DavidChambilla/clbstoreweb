@@ -69,13 +69,13 @@
                             </div>
                             <div class="mb-3">
                                 <label for="cboCur" class="form-label">Categoria:</label>
-                                <select type="text" class="form-control" id="cboCur" th:field="*{curso}" required>
+                                <select type="text" class="form-control" id="cboCur" th:field="*{categoria}" required>
                                     <option value="">Seleccione la categoria: </option>
                                     <option th:each="categoria:${categorias}" th:value="${categoria.codigo}" th:text="${categoria.nombre}"></option>
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-primary">Registrar</button><br>
-
+                            <a th:href="@{/listarcategoria}" class="btn btn-secondary">Regresar</a>
                         </form>
 
                     </div>

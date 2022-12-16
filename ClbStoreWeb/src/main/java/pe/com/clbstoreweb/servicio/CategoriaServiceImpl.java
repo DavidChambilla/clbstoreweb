@@ -46,4 +46,11 @@ public class CategoriaServiceImpl implements CategoriaService{
     public List<CategoriaEntity> findAllCustom() {
         return categoriarepositorio.findAllCustom();
     }
+    
+    @Override
+    public CategoriaEntity enable(CategoriaEntity c) {
+        CategoriaEntity objcategoria = categoriarepositorio.getById(c.getCodigo());
+        objcategoria.setEstado(true);
+        return categoriarepositorio.save(objcategoria);
+    }
 }
