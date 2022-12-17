@@ -26,5 +26,7 @@ public class RegistroControlador {
         modelo.addAttribute("usuarios", servicio.findAll());
         return "listarusuario";
     }
+    
+    
 
 }

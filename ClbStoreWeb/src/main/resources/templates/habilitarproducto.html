@@ -11,7 +11,7 @@
 
         <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <title>Principal</title>
+        <title>Productos</title>
     </head>
     <body>
         <div class="container">
@@ -44,12 +44,40 @@
             </nav>
 
             <div class="row">
-                <div class="col-md-6">
-                    <div>
-                        <h1>Bienvenido al Sistema</h1>
-                        <p>
-                            Bienvenido el usuario, <span sec:authentication="name"></span></div>
-                    </p>
+                <div th:if=${param.correcto}>
+                    <div class="alert alert-success" role="alert">
+                        Se registro exitosamente                  
+                    </div>
+                </div>
+                
+                <div class="col-md-12">
+                    <h1>Habilitar Productos</h1>
+                    <div class="table-responsive">
+                        <table class="table align-middle table-striped table-hover table-bordered" >
+                            <thead class="table-dark">
+                            <th>Codigo</th>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Stock</th>
+                            <th>Categoria</th>
+                            <th>Estado</th>
+                            <th></th>
+                            </thead>
+                            <tbody>
+                                <tr th:each="producto : ${productos}">
+                                    <td th:text="${producto.codigo}"></td>
+                                    <td th:text="${producto.nombre}"></td>
+                                    <td th:text="${producto.precio}"></td>
+                                    <td th:text="${producto.stock}"></td>
+                                    <td th:text="${producto.categoria.nombre}"></td>
+                                    <td th:text="${producto.estado}? 'Habilitado':'Deshabilitado'"></td> 
+                                    <td><a th:href="@{/habilitaproducto/{id}(id=${producto.codigo})}" class="btn btn-success">Habilitar</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <a th:href="@{/listarproducto}" class="btn btn-secondary">Regresar</a>
+
 
 
                 </div>

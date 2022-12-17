@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      layout:decorator="layout/base">
     <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">
@@ -7,7 +11,7 @@
 
         <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <title>Registrar usuario</title>
+        <title>Usuarios</title>
     </head>
     <body>
         <div class="container">
@@ -40,43 +44,39 @@
             </nav>
 
             <div class="row">
-                <div class="col-md-6">
-                    <div th:if=${param.correcto}>
-                        <div class="alert alert-success" role="alert">
-                            Se registro exitosamente                  
-                        </div>
+                <div class="col-md-12">
+                    <h1>Lista de Usuarios</h1>
+                    <div class="table-responsive">
+                        <table class="table align-middle table-striped table-hover table-bordered" >
+                            <thead class="table-dark">
+                            <th>Codigo</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Correo</th>
+                            <th></th>
+                            <th></th>
+                            </thead>
+                            <tbody>
+                                <tr th:each="usuario : ${usuarios}">
+                                    <td th:text="${usuario.codigo}"></td>
+                                    <td th:text="${usuario.nombre}"></td>
+                                    <td th:text="${usuario.apellido}"></td> 
+                                    <td th:text="${usuario.email}"></td>
+                                    <td><a href="#" class="btn btn-success">Actualizar</a></td>
+                                    <td><a href="#" class="btn btn-danger">Eliminar</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <div>
-                        <h1>Registro Usuario</h1>
-                        <form th:action="@{/registrousuario}" method="post" th:object="${usuario}">
-                            <div class="mb-3">
-                                <label for="txtNom" class="form-label">Nombres:</label>
-                                <input type="text" class="form-control" id="txtNom" th:field="*{nombre}" required>   
-                            </div>
-                            <div class="mb-3">
-                                <label for="txtApe" class="form-label">Apellidos:</label>
-                                <input type="text" class="form-control" id="txtApep" th:field="*{apellido}" required>   
-                            </div> 
-
-                            <div class="mb-3">
-                                <label for="txtCor" class="form-label">Correo:</label>
-                                <input type="text" class="form-control" id="txtCor" th:field="*{email}" required>   
-                            </div>
+                    <a th:href="@{/registrousuario}" class="btn btn-primary">Registrar Usuario</a>
 
 
-                            <div class="mb-3">
-                                <label for="txtCla" class="form-label">Clave:</label>
-                                <input type="text" class="form-control" id="txtCla" th:field="*{clave}" required>   
-                            </div>
-
-                            <button type="submit" class="btn btn-primary">Registrar</button><br>
-                            <span>Si ya estas registrado <a href="#">Inicia Sesion aqui</a></span>
-                        </form>
-                    </div>
 
                 </div>
+
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    </body>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
 </html>

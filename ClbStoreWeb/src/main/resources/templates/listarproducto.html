@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      layout:decorator="layout/base">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <title>Productos</title>
+    </head>
+    <body>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light bg-gradient" style="background-color: #e3f2fd;">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#"  th:href="@{/}">CLB Store</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#" th:href="@{/}">Inicio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link link-dark" th:href="@{/listarusuario}">Usuario</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/listarcategoria}">Categoria</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/listarproducto}">Producto</a>
+                            </li>
+                            <li class="nav-item" sec:authorize="isAuthenticated()">
+                                <a class="nav-link" th:href="@{logout}">Cerrar Sesion</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="row">
+                <div th:if=${param.correcto}>
+                    <div class="alert alert-success" role="alert">
+                        Se registro exitosamente                  
+                    </div>
+                </div>
+                <div th:if=${param.actualizo}>
+                    <div class="alert alert-success" role="alert">
+                        Se actualizo exitosamente                  
+                    </div>
+                </div>
+                <div th:if=${param.elimino}>
+                    <div class="alert alert-success" role="alert">
+                        Se elimino exitosamente                  
+                    </div>
+                </div>
+                <div th:if=${param.habilito}>
+                    <div class="alert alert-success" role="alert">
+                        Se habilito exitosamente                  
+                    </div>
+                </div>
+                
+                <div class="col-md-12">
+                    <h1>Lista de Productos</h1>
+                    <div class="table-responsive">
+                        <table class="table align-middle table-striped table-hover table-bordered" >
+                            <thead class="table-dark">
+                            <th>Codigo</th>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Stock</th>
+                            <th>Categoria</th>
+                            <th>Estado</th>
+                            <th></th>
+                            <th></th>
+                            </thead>
+                            <tbody>
+                                <tr th:each="producto : ${productos}">
+                                    <td th:text="${producto.codigo}"></td>
+                                    <td th:text="${producto.nombre}"></td>
+                                    <td th:text="${producto.precio}"></td>
+                                    <td th:text="${producto.stock}"></td>
+                                    <td th:text="${producto.categoria.nombre}"></td>
+                                    <td th:text="${producto.estado}? 'Habilitado':'Deshabilitado'"></td> 
+                                    <td><a th:href="@{/actualizaproducto/{id}(id=${producto.codigo})}" class="btn btn-success">Actualizar</a></td>
+                                    <td><a th:href="@{/eliminaproducto/{id}(id=${producto.codigo})}" class="btn btn-danger">Eliminar</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <a th:href="@{/registroproducto}" class="btn btn-primary">Registrar Producto</a>
+                    <a th:href="@{/habilitarproducto}" class="btn btn-info">Habilitar Producto</a>
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

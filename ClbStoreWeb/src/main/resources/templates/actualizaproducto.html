@@ -7,7 +7,7 @@
 
         <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <title>Registrar usuario</title>
+        <title>Registrar prodcuto</title>
     </head>
     <body>
         <div class="container">
@@ -41,38 +41,50 @@
 
             <div class="row">
                 <div class="col-md-6">
-                    <div th:if=${param.correcto}>
-                        <div class="alert alert-success" role="alert">
-                            Se registro exitosamente                  
-                        </div>
-                    </div>
+
                     <div>
-                        <h1>Registro Usuario</h1>
-                        <form th:action="@{/registrousuario}" method="post" th:object="${usuario}">
+                        <h1>Actualizar Producto</h1>
+                        <form th:action="@{/actualizaproducto/{id}(id=${productos.codigo})}" method="post" th:object="${productos}">
                             <div class="mb-3">
-                                <label for="txtNom" class="form-label">Nombres:</label>
+                                <label for="txtNom" class="form-label">Codigo:</label>
+                                <input type="text" class="form-control" id="txtNom" th:field="*{codigo}"  th:value="${productos.nombre}" required readonly="">   
+                            </div>
+                            <div class="mb-3">
+                                <label for="txtNom" class="form-label">Nombre:</label>
                                 <input type="text" class="form-control" id="txtNom" th:field="*{nombre}" required>   
                             </div>
                             <div class="mb-3">
-                                <label for="txtApe" class="form-label">Apellidos:</label>
-                                <input type="text" class="form-control" id="txtApep" th:field="*{apellido}" required>   
-                            </div> 
-
-                            <div class="mb-3">
-                                <label for="txtCor" class="form-label">Correo:</label>
-                                <input type="text" class="form-control" id="txtCor" th:field="*{email}" required>   
+                                <label for="txtPre" class="form-label">Precio:</label>
+                                <input type="text" class="form-control" id="txtPre" th:field="*{Precio}" required>   
                             </div>
 
-
                             <div class="mb-3">
-                                <label for="txtCla" class="form-label">Clave:</label>
-                                <input type="text" class="form-control" id="txtCla" th:field="*{clave}" required>   
+                                <label for="txtSt" class="form-label">Stock:</label>
+                                <input type="text" class="form-control" id="txtSt" th:field="*{stock}" required>   
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="cboCat" class="form-label">Categoria:</label>
+                                <select type="text" class="form-control" id="cboCat" th:field="*{categoria}" required>
+                                    <option value="">Seleccione un categoria: </option>
+                                    <option th:each="categoria:${categorias}" th:value="${categoria.codigo}" th:text="${categoria.nombre}"></option>
+                                </select>
                             </div>
 
-                            <button type="submit" class="btn btn-primary">Registrar</button><br>
-                            <span>Si ya estas registrado <a href="#">Inicia Sesion aqui</a></span>
+                            <div class="mb-3">
+
+                                <input class="form-check-input" type="checkbox"  id="chkEst" th:field="*{estado}">
+                                <label class="form-check-label" for="chkEst">
+                                    Habilitado
+                                </label>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Actualizar</button>
+                            <a th:href="@{/listarproducto}" class="btn btn-secondary">Regresar</a>
+
                         </form>
+
                     </div>
+
 
                 </div>
             </div>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es"  xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Ingreso al Sistema - CLB Store</title>
         <meta charset="utf-8">
@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
 
     </head>
-    <body class="img js-fullheight" style="background-image: url('/clbstore/images/bg.jpg');">
+    <body>
         <section class="ftco-section">
             <div class="container">
                 <div class="row justify-content-center">
@@ -21,9 +21,12 @@
                     </div>
                 </div>
                 <div class="row justify-content-center">
-                    <div class="col-md-6 col-lg-4">
-                        <div class="login-wrap p-0">
-                            <h3 class="mb-4 text-center">¿Tienes una cuenta?</h3>
+                    <div class="col-md-6 col-lg-5">
+                        <div class="login-wrap p-4 p-md-5">
+                            <div class="icon d-flex align-items-center justify-content-center">
+                                <span class="fa fa-user-o"></span>
+                            </div>
+                            <h3 class="text-center mb-4">¿Tienes una cuenta?</h3>
                             <form th:action="@{/login}"class="login-form" method="post">
                                 <div th:if=${param.error}>
                                     <div class="alert alert-danger" role="alert">
@@ -35,37 +38,33 @@
                                         Ha cerrado sesion exitosamente                 
                                     </div>
                                 </div>
-                                
-                                
-                                
+
+
+
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Ingrese su Usuario" id="username" name="username" required>
+                                    <input type="text" class="form-control rounded-left" placeholder="Ingrese su Usuario" id="username" name="username" required>
                                 </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Ingrese su Clave" id="password" name="password" required>
-                                    <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="form-control btn btn-primary submit px-3" id="btnIngresar" name="btnIngresar">Ingresar</button>
+                                <div class="form-group d-flex">
+                                    <input type="password" class="form-control rounded-left" placeholder="Ingrese su Clave" id="password" name="password" required>
                                 </div>
                                 <div class="form-group d-md-flex">
                                     <div class="w-50 text-md-right">
-                                        <a href="#" style="color: #fff">Olvido su contraseña</a>
+                                        <a href="#">Olvido su contraseña</a>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary rounded submit p-3 px-5" id="btnIngresar" name="btnIngresar">Ingresar</button>  
+                                </div>
                             </form>
-                            
                         </div>
                     </div>
                 </div>
-            </div>
         </section>
 
-        <script src="js/jquery.min.js"></script>
-        <script src="js/popper.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/main.js"></script>
+        <script src="../static/js/jquery.min.js"></script>
+        <script src="../static/js/popper.js"></script>
+        <script src="../static/js/bootstrap.min.js"></script>
+        <script src="../static/js/main.js"></script>
 
     </body>
 </html>
-

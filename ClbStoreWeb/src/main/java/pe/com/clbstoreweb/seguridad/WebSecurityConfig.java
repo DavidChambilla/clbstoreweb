@@ -43,6 +43,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers(
                 "/registro**",
+                "/categoria/**",
+                "/usuario/**",
+                "/producto/**",
                 "/index**",
                 "/rol**",
                 "/js/**",
@@ -57,6 +60,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout().invalidateHttpSession(true).clearAuthentication(true)
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login?logout").permitAll();
+        //permitir el método post, put, delete
+        http.csrf().disable();
     }
 
 
