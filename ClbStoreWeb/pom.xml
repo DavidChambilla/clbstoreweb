@@ -11,7 +11,7 @@
 	<groupId>pe.com.clbstoreweb</groupId>
 	<artifactId>pe.com.clbstoreweb</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ClbStoreWeb</name>
+	<name>ClbStoreWebFinal</name>
 	<description>Proyecto Spring Web</description>
 	<properties>
 		<java.version>17</java.version>
