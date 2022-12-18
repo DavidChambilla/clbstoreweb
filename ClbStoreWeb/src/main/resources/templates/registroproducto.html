@@ -29,6 +29,9 @@
                                 <a class="nav-link" th:href="@{/listarcategoria}">Categoria</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" th:href="@{/listarmarca}">Marca</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" th:href="@{/listarproducto}">Producto</a>
                             </li>
                             <li class="nav-item" sec:authorize="isAuthenticated()">
@@ -64,6 +67,14 @@
                                 <select type="text" class="form-control" id="cboCat" th:field="*{categoria}" required>
                                     <option value="">Seleccione un categoria: </option>
                                     <option th:each="categoria:${categorias}" th:value="${categoria.codigo}" th:text="${categoria.nombre}"></option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="cboMar" class="form-label">Marca:</label>
+                                <select type="text" class="form-control" id="cboMar" th:field="*{marca}" required>
+                                    <option value="">Seleccione una marca: </option>
+                                    <option th:each="marca:${marcas}" th:value="${marca.codigo}" th:text="${marca.nombre}"></option>
                                 </select>
                             </div>
 

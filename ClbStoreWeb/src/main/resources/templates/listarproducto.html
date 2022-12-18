@@ -33,6 +33,9 @@
                                 <a class="nav-link" th:href="@{/listarcategoria}">Categoria</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" th:href="@{/listarmarca}">Marca</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" th:href="@{/listarproducto}">Producto</a>
                             </li>
                             <li class="nav-item" sec:authorize="isAuthenticated()">
@@ -75,6 +78,7 @@
                             <th>Precio</th>
                             <th>Stock</th>
                             <th>Categoria</th>
+                            <th>Marca</th>
                             <th>Estado</th>
                             <th></th>
                             <th></th>
@@ -86,6 +90,7 @@
                                     <td th:text="${producto.precio}"></td>
                                     <td th:text="${producto.stock}"></td>
                                     <td th:text="${producto.categoria.nombre}"></td>
+                                    <td th:text="${producto.marca.nombre}"></td>
                                     <td th:text="${producto.estado}? 'Habilitado':'Deshabilitado'"></td> 
                                     <td><a th:href="@{/actualizaproducto/{id}(id=${producto.codigo})}" class="btn btn-success">Actualizar</a></td>
                                     <td><a th:href="@{/eliminaproducto/{id}(id=${producto.codigo})}" class="btn btn-danger">Eliminar</a></td>

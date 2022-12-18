@@ -46,15 +46,15 @@
                 <div class="col-md-6">
 
                     <div>
-                        <h1>Actualizar Categoria</h1>
-                        <form th:action="@{/actualizacategoria/{id}(id=${categorias.codigo})}" method="post" th:object="${categorias}">
+                        <h1>Actualizar Marca</h1>
+                        <form th:action="@{/actualizamarca/{id}(id=${marcas.codigo})}" method="post" th:object="${marcas}">
                             <div class="mb-3">
                                 <label for="txtNom" class="form-label">Codigo:</label>
-                                <input type="text" class="form-control" id="txtNom" th:field="*{codigo}"  th:value="${categorias.nombre}" required>   
+                                <input type="text" class="form-control" id="txtNom" th:field="*{codigo}"  th:value="${marcas.nombre}" required>   
                             </div>
                             <div class="mb-3">
                                 <label for="txtNom" class="form-label">Nombre:</label>
-                                <input type="text" class="form-control" id="txtNom" th:field="*{nombre}"  th:value="${categorias.nombre}" required>   
+                                <input type="text" class="form-control" id="txtNom" th:field="*{nombre}"  th:value="${marcas.nombre}" required>   
                             </div>
                             <div class="mb-3">
                                 <input class="form-check-input" type="checkbox"  id="chkEst" th:field="*{estado}">
@@ -63,7 +63,7 @@
                                 </label>
                             </div>
                             <button type="submit" class="btn btn-success">Actualizar</button>
-                            <a th:href="@{/listarcategoria}" class="btn btn-secondary">Regresar</a>
+                            <a th:href="@{/listarmarca}" class="btn btn-secondary">Regresar</a>
 
 
                         </form>
