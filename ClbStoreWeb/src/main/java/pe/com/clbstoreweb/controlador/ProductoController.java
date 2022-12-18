@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import pe.com.clbstoreweb.modelo.ProductoEntity;
 import pe.com.clbstoreweb.repositorio.ProductoDisable;
 import pe.com.clbstoreweb.servicio.CategoriaService;
+import pe.com.clbstoreweb.servicio.MarcaService;
 import pe.com.clbstoreweb.servicio.ProductoService;
 
 @Controller
@@ -19,6 +20,8 @@ public class ProductoController {
     private ProductoService servicio;
     @Autowired
     private CategoriaService serviciocategoria;
+    @Autowired
+    private MarcaService serviciomarca;
     
     @Autowired
     private ProductoDisable disable;
@@ -35,6 +38,7 @@ public class ProductoController {
     public String MostrarFormularioRegistro(Model modelo) {
         //es el nombre que tendra la pagina web
         modelo.addAttribute("categorias", serviciocategoria.findAll());
+        modelo.addAttribute("marcas", serviciomarca.findAll());
         return "registroproducto";
     }
 
@@ -55,6 +59,7 @@ public class ProductoController {
     @GetMapping("/actualizaproducto/{id}")
     public String MostrarFormularioActualiza(@PathVariable Long id, Model modelo) {
         modelo.addAttribute("categorias", serviciocategoria.findAll());
+        modelo.addAttribute("marcas", serviciomarca.findAll());
         modelo.addAttribute("productos", servicio.findById(id));
         return "actualizaproducto";
     }
